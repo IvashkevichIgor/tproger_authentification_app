@@ -19,7 +19,7 @@ public class DefaultClientService implements ClientService{
     @Override
     public void register(String clientId, String clientSecret) {
         if(clientRepository.findById(clientId).isPresent()){
-            throw new RegistrationException("Client with ID: " + clientId + "already registered");
+            throw new RegistrationException("Client with ID: " + clientId + " already registered");
         }
 
         String hash = BCrypt.hashpw(clientSecret, BCrypt.gensalt());
